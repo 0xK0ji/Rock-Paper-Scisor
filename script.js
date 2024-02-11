@@ -13,7 +13,6 @@ function getComputerChoice() {
 
 // Joue un round, les choix doivent être case insensitive
 function playRound(playerSelection, computerSelection) {
-    console.log(`player:${playerSelection},computer:${computerSelection}`);
     let winner;
     if (playerSelection === computerSelection) {
         winner = "draw";
@@ -23,10 +22,10 @@ function playRound(playerSelection, computerSelection) {
             (playerSelection === "PAPER" && computerSelection === "ROCK") ||
             (playerSelection === "ROCK" && computerSelection === "SCISOR")) {
                 winner = "player";
-                console.log("Player Win");
+                console.log(`You Win : ${playerSelection} beat ${computerSelection} !`);
             } else {
                 winner = "computer";
-                console.log("Computer win")
+                console.log(`You Lose : ${computerSelection} beat ${playerSelection} !`);
             }
     console.log('-------------');
     return winner;
