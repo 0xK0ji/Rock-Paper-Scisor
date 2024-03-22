@@ -31,6 +31,8 @@ function playRound(playerSelection, computerSelection) {
     return winner;
 }
 
+
+/*
 function playGame() {
     let playerScore = 0;
     let computerScore = 0;
@@ -44,7 +46,7 @@ function playGame() {
             computerScore += 1;
         }
     }
-
+*/
 
 
     if (playerScore === computerScore) {
