@@ -13,21 +13,26 @@ function getComputerChoice() {
 
 // Joue un round, les choix doivent être case insensitive
 function playRound(playerSelection, computerSelection) {
+    display.innerHTML = `
+    Computer Choose: ${computerSelection}<br/>
+    User choose: ${playerSelection}<br/>
+    `;
     let winner;
     if (playerSelection === computerSelection) {
         winner = "draw";
-        console.log("Thats a Draw");
+        display.innerHTML += "Thats a Draw";
     }
     else if ((playerSelection === "SCISOR" && computerSelection === "PAPER") || 
             (playerSelection === "PAPER" && computerSelection === "ROCK") ||
             (playerSelection === "ROCK" && computerSelection === "SCISOR")) {
                 winner = "player";
-                console.log(`You Win : ${playerSelection} beat ${computerSelection} !`);
+                display.innerHTML += `You Win : ${playerSelection} beat ${computerSelection} !`;
             } else {
                 winner = "computer";
-                console.log(`You Lose : ${computerSelection} beat ${playerSelection} !`);
-            }
-    console.log('-------------');
+                display.innerHTML += `You Lose : ${computerSelection} beat ${playerSelection} !`;
+            };
+
+
     return winner;
 }
 
@@ -46,7 +51,6 @@ function playGame() {
             computerScore += 1;
         }
     }
-*/
 
 
     if (playerScore === computerScore) {
@@ -60,4 +64,44 @@ function playGame() {
 
 }
 
+
 console.log(playGame());
+*/
+
+const scoreBoard = document.querySelector('.score')
+
+
+const rockBtn = document.querySelectorAll(".card");
+const playerScoreUI = document.querySelector(".player-score");
+const computerScoreUI = document.querySelector(".computer-score");
+const display = document.querySelector("p");
+
+let computerScore = 0;
+let userScore = 0;
+
+computerScoreUI.textContent = `Computer: ${computerScore}`;
+playerScoreUI.textContent = `User: ${userScore}`;
+
+rockBtn.forEach(element => {
+    element.addEventListener('click', (e) => {
+        let userChoice = element.id;
+        e.stopPropagation();
+        winner = playRound(getComputerChoice(), userChoice.toUpperCase());
+        updateScore(winner);
+    })
+});
+
+
+function updateScore(winner) {
+    if (winner == "draw") {
+        computerScore += 1;
+        userScore += 1;
+    } else if (winner === "computer") {
+        computerScore += 1;
+    } else {
+        userScore += 1;
+    }
+    computerScoreUI.textContent = `Computer: ${computerScore}`;
+    playerScoreUI.textContent = `User: ${userScore}`;
+}
+
