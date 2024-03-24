@@ -2,11 +2,37 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<link rel="stylesheet" href="styles.css">
 		<title>Rock Paper Scisor</title>
 	</head>
 
-
 	<body>
-		<script src="script.js"></script>
+		<script src="script.js" defer></script>
+
+		<div class="container">
+			<div class="score">
+				<span class="player-score"></span>
+				<span class="computer-score"></span>
+			</div>
+
+			<div class="display-round">
+				<p></p>
+			</div>
+	
+			<div class="player-ui">
+				<div class="card" id="rock">
+					<img class="card-img" alt="rock" src="./images/rock.png" />
+					<span>Rock</span>
+				</div>
+				<div class="card" id="paper">
+					<img class="card-img" alt="paper" src="./images/paper.png" />
+					<span>Paper</span>
+				</div>
+				<div class="card" id="scisor">
+					<img class="card-img" alt="scisor" src="./images/scisor.png" />
+					<span>Scisor</span>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
